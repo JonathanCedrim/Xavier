@@ -15,7 +15,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 @EqualsAndHashCode
 public class Vendedor extends Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,7 +53,7 @@ public class Vendedor extends Funcionario implements Serializable {
     @Getter
     @Setter
     @OneToMany(mappedBy = "vendedor")
-    @JsonBackReference
+    @JsonIgnore
     private List<Movimento> movimentos;
 
     @Column(length = 50)

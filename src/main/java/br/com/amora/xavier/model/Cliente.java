@@ -1,7 +1,9 @@
 package br.com.amora.xavier.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -149,6 +151,6 @@ public class Cliente implements Serializable {
     @Getter
     @Setter
     @OneToMany(mappedBy = "vendedor")
-    @JsonBackReference
+    @JsonIgnore
     private List<Movimento> movimentos;
 }

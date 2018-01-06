@@ -1,5 +1,9 @@
 package br.com.amora.xavier.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +18,8 @@ public class Movimento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @JsonIgnore
+    @JsonBackReference
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.AUTO)
