@@ -18,8 +18,6 @@ public class Movimento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @JsonIgnore
-    @JsonBackReference
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,7 +54,6 @@ public class Movimento implements Serializable {
     @Setter
     private long valorCompra;
 
-
     @Getter
     @Setter
     private long valorRecebido;
@@ -71,7 +68,7 @@ public class Movimento implements Serializable {
 
     @Getter
     @Setter
-    private Date dataPamentoII;
+    private Date dataPagamentoII;
 
     @Getter
     @Setter
