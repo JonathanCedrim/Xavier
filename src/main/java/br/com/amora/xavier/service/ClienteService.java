@@ -27,8 +27,8 @@ public class ClienteService {
         return clienteRepository.findOne(id);
     }
 
-    public Cliente findClienteByCodigo(Long codigo) {
-        return clienteRepository.findClienteByCodigo(codigo);
+    public Cliente findClienteByCodigo(long codigoVendedor, long codigoCliente) {
+        return clienteRepository.findClienteByCodigo(codigoVendedor, codigoCliente);
     }
 
     public List<Cliente> findClientesByNome(String nome) {

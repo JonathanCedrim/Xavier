@@ -14,8 +14,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("SELECT c FROM Cliente c WHERE c.nome LIKE %:nome%")
     List<Cliente> findClienteByNome(@Param("nome") String nome);
 
-    @Query("SELECT c FROM Cliente c WHERE c.codigo = :codigo")
-    Cliente findClienteByCodigo(Long codigo);
+    @Query("SELECT c FROM Cliente c WHERE c.codigo = :codigoCliente AND c.vendedor.codigo = :codigoVendedor")
+    Cliente findClienteByCodigo(@Param("codigoVendedor") long codigoVendedor, @Param("codigoCliente") long codigoCliente);
 
     @Query("SELECT c FROM Cliente c WHERE c.rg = :rg")
     Cliente findClienteByRG(@Param("rg") String rg);
@@ -38,6 +38,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("SELECT c FROM Cliente c WHERE c.email = :email")
     List<Cliente> findClienteByEmail(@Param("email") String email);
 
-    @Query("SELECT c FROM Cliente c WHERE c.vendedor.id = :codigoVendedor")
+    @Query("SELECT c FROM Cliente c WHERE c.vendedor.codigo = :codigoVendedor")
     List<Cliente> getClientesDoVendedor(@Param("codigoVendedor") long codigoVendedor);
 }

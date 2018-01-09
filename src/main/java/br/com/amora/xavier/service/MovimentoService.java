@@ -29,6 +29,10 @@ public class MovimentoService {
         return movimentoRepository.findMovimentoBynumeroPedido(numeroPedido);
     }
 
+    public List<Movimento> getMovimentoByCodigoVendedorAndCodigoCliente(long codigoVendedor, long codigoCliente) {
+        return movimentoRepository.findMovimentoByCodigoVendedorAndCodigoCliente(codigoVendedor, codigoCliente);
+    }
+
     public List<Movimento> getAllMovimentos() {
         return movimentoRepository.findAll();
     }
@@ -38,7 +42,7 @@ public class MovimentoService {
         movimentoRepository.save(movimento);
     }
 
-    public void alterMovimento(Movimento movimento) {
+    public void updateMovimento(Movimento movimento) {
         movimentoRepository.save(movimento);
     }
 
