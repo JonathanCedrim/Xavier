@@ -28,7 +28,6 @@ public class Movimento implements Serializable {
     @Getter
     @Setter
     @ManyToOne
-    @JsonIgnore
     private Vendedor vendedor;
 
     @Getter
