@@ -16,7 +16,8 @@ import java.util.List;
 
 @Entity
 @EqualsAndHashCode
-public class Vendedor extends Funcionario implements Serializable {
+public class
+Vendedor extends Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -54,6 +55,12 @@ public class Vendedor extends Funcionario implements Serializable {
     @OneToMany(mappedBy = "vendedor")
     @JsonIgnore
     private List<Movimento> movimentos;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "vendedor")
+    @JsonIgnore
+    private List<Ideal> ideals;
 
     @Getter
     @Setter
