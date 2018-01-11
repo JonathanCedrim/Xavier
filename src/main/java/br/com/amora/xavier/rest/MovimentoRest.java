@@ -40,6 +40,11 @@ public class MovimentoRest {
         return movimentoService.getMovimentoByNumeroPedido(numeroPedido);
     }
 
+    @GetMapping(value = "/busca/vendedor/{codigoVendedor}/cliente/{codigoCliente}")
+    public List<Movimento> getMovimentoByVendedorAndCliente(@PathVariable long codigoVendedor, @PathVariable long codigoCliente) {
+        return movimentoService.getMovimentoByCodigoVendedorAndCodigoCliente(codigoVendedor, codigoCliente);
+    }
+
     @PostMapping
     public void saveMovimento(@RequestBody Movimento movimento) {
         movimentoService.saveMovimento(movimento);
@@ -47,7 +52,7 @@ public class MovimentoRest {
 
     @PutMapping
     public void alterMovimento(@RequestBody Movimento movimento) {
-        movimentoService.saveMovimento(movimento);
+        movimentoService.updateMovimento(movimento);
     }
 
     @DeleteMapping(value = "/{id}")

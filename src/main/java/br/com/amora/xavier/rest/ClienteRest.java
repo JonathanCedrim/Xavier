@@ -45,9 +45,9 @@ public class ClienteRest {
         return clienteService.findClientesByNome(nome);
     }
 
-    @GetMapping("/busca/codigo/{codigo}")
-    public Cliente getClienteByCodigo(@PathVariable Long codigo) {
-        return clienteService.findClienteByCodigo(codigo);
+    @GetMapping("/busca/codigo/vendedor/{codigoVendedor}/cliente/{codigoCliente}")
+    public Cliente getClienteByCodigo(@PathVariable long codigoVendedor, @PathVariable long codigoCliente) {
+        return clienteService.findClienteByCodigo(codigoVendedor, codigoCliente);
     }
 
     @GetMapping("/busca/rg/{rg}")

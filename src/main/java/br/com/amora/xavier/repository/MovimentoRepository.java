@@ -15,10 +15,10 @@ public interface MovimentoRepository extends JpaRepository<Movimento, Long> {
     @Query("SELECT m FROM Movimento m WHERE m.codigo = :codigo")
     Movimento findMovimentoByCodigo(Long codigo);
 
-    @Query("SELECT m FROM Movimento m WHERE m.vendedor.id = :codigoVendedor")
+    @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor")
     List<Movimento> getMovimentosDoVendedor(@Param("codigoVendedor") long codigoVendedor);
 
-    @Query("SELECT m FROM Movimento m WHERE m.cliente.id = :codigoCliente")
+    @Query("SELECT m FROM Movimento m WHERE m.cliente.codigo = :codigoCliente")
     List<Movimento> getMovimentosDoCliente(@Param("codigoCliente") long codigoCliente);
 
     @Query("SELECT m FROM Movimento m WHERE m.numeroRecibo = :numeroRecibo")
@@ -27,5 +27,6 @@ public interface MovimentoRepository extends JpaRepository<Movimento, Long> {
     @Query("SELECT m FROM Movimento m WHERE m.numeroPedido = :numeroPedido")
     Movimento findMovimentoBynumeroPedido(@Param("numeroPedido") Long numeroPedido);
 
-
+    @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor AND m.cliente.codigo = :codigoCliente")
+    List<Movimento> findMovimentoByCodigoVendedorAndCodigoCliente(@Param("codigoVendedor") long codigoVendedor, @Param("codigoCliente") long codigoCliente);
 }
