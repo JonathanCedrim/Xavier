@@ -28,7 +28,6 @@ public class Ideal implements Serializable {
     @Getter
     @Setter
     @ManyToOne
-    @JsonIgnore
     private Vendedor vendedor;
 
     @Getter

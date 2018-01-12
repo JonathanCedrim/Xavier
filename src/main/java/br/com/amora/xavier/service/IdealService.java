@@ -19,6 +19,8 @@ public class IdealService {
 
     public Ideal getIdealByCodigo(long codigo) { return this.idealRepository.getIdealByCodigo(codigo);}
 
+    public List<Ideal> getIdealsByVendedor(long codigoVendedor) { return this.idealRepository.getIdealsByVendedor(codigoVendedor);}
+
     public List<Ideal> getIdealByData(Date dataInicial, Date dataFinal) {
         return this.idealRepository.getIdealByData(dataInicial, dataFinal);
     }
