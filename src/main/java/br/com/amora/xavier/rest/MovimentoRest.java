@@ -49,7 +49,7 @@ public class MovimentoRest {
 
     @PostMapping(value= "/busca/data")
     public List<Movimento> getMovimentoByVendedorAndData(@RequestBody Movimento movimento) {
-        long codigoVendedor = 1;
+        long codigoVendedor = movimento.getVendedor().getCodigo();
         Date dataPagamento = movimento.getDataPagamento();
         Date dataPagamentoII = movimento.getDataPagamentoII();
 

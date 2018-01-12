@@ -29,10 +29,13 @@ public class IdealRest {
         return idealService.getIdealById(id);
     }
 
-    @GetMapping(value = "/busca/codigo/{codigo}")
-    public Ideal getIdealByCodigo(@PathVariable Long codigo) {
-        return idealService.getIdealByCodigo(codigo);
+    @GetMapping(value = "/busca/codigo/{codigoIdeal}")
+    public Ideal getIdealByCodigo(@PathVariable Long codigoIdeal) {
+        return idealService.getIdealByCodigo(codigoIdeal);
     }
+
+    @GetMapping(value = "/busca/codigo/vendedor/{codigoVendedor}")
+    public List<Ideal> getAllIdealsByVendedor(@PathVariable Long codigoVendedor) { return idealService.getIdealsByVendedor(codigoVendedor);}
 
     @PostMapping(value = "/busca/data")
     public List<Ideal> getIdealByData(@RequestBody Ideal ideal) {
