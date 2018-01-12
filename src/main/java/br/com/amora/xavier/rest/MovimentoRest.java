@@ -1,11 +1,13 @@
 package br.com.amora.xavier.rest;
 
+import br.com.amora.xavier.model.Ideal;
 import br.com.amora.xavier.model.Movimento;
 import br.com.amora.xavier.repository.MovimentoRepository;
 import br.com.amora.xavier.service.MovimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -43,6 +45,15 @@ public class MovimentoRest {
     @GetMapping(value = "/busca/vendedor/{codigoVendedor}/cliente/{codigoCliente}")
     public List<Movimento> getMovimentoByVendedorAndCliente(@PathVariable long codigoVendedor, @PathVariable long codigoCliente) {
         return movimentoService.getMovimentoByCodigoVendedorAndCodigoCliente(codigoVendedor, codigoCliente);
+    }
+
+    @PostMapping(value= "/busca/data")
+    public List<Movimento> getMovimentoByVendedorAndData(@RequestBody Movimento movimento) {
+        long codigoVendedor = 1;
+        Date dataPagamento = movimento.getDataPagamento();
+        Date dataPagamentoII = movimento.getDataPagamentoII();
+
+        return this.movimentoService.getMovimentoByVendedorAndData(codigoVendedor, dataPagamento, dataPagamentoII);
     }
 
     @PostMapping

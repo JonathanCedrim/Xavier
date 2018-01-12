@@ -1,5 +1,7 @@
 package br.com.amora.xavier.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +28,7 @@ public class Ideal implements Serializable {
     @Getter
     @Setter
     @ManyToOne
+    @JsonIgnore
     private Vendedor vendedor;
 
     @Getter
