@@ -8,6 +8,7 @@ import br.com.amora.xavier.service.MovimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -33,8 +34,11 @@ public class IdealRest {
         return idealService.getIdealByCodigo(codigo);
     }
 
-    @GetMapping(value = "/busca/data/dataInicial/{dataInicial}/dataFinal/{dataFinal}")
-    public List<Ideal> getIdealByData(@PathVariable Date dataInicial, @PathVariable Date dataFinal ) {
+    @PostMapping(value = "/busca/data")
+    public List<Ideal> getIdealByData(@RequestBody Ideal ideal) {
+        Date dataInicial = ideal.getDataInicial();
+        Date dataFinal = ideal.getDataFinal();
+
         return idealService.getIdealByData(dataInicial, dataFinal);
     }
 

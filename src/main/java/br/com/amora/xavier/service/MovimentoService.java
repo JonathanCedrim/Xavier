@@ -5,6 +5,7 @@ import br.com.amora.xavier.repository.MovimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,6 +32,10 @@ public class MovimentoService {
 
     public List<Movimento> getMovimentoByCodigoVendedorAndCodigoCliente(long codigoVendedor, long codigoCliente) {
         return movimentoRepository.findMovimentoByCodigoVendedorAndCodigoCliente(codigoVendedor, codigoCliente);
+    }
+
+    public List<Movimento> getMovimentoByVendedorAndData(long codigoVendedor, Date dataPagamento, Date dataPagamentoII) {
+        return movimentoRepository.findMovimentoByVendedorAndData(codigoVendedor, dataPagamento, dataPagamentoII);
     }
 
     public List<Movimento> getAllMovimentos() {
