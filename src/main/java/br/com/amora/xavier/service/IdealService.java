@@ -2,6 +2,7 @@ package br.com.amora.xavier.service;
 
 import br.com.amora.xavier.model.Ideal;
 import br.com.amora.xavier.model.Movimento;
+import br.com.amora.xavier.model.Vendedor;
 import br.com.amora.xavier.repository.IdealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class IdealService {
 
     public List<Ideal> getIdealByData(Date dataInicial, Date dataFinal) {
         return this.idealRepository.getIdealByData(dataInicial, dataFinal);
+    }
+
+    public List<Ideal> getIdealByVendedorAndData(long codigoVendendor, Date dataInicial, Date dataFinal) {
+        return this.idealRepository.getIdealByVendedorAndData(codigoVendendor, dataInicial, dataFinal);
     }
 
     public List<Ideal> getAllIdeals() { return this.idealRepository.findAll(); }
