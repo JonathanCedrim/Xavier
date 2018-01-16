@@ -48,6 +48,15 @@ public class MovimentoRest {
     }
 
     @PostMapping(value= "/busca/data")
+    public List<Movimento> getMovimentoByData(@RequestBody Movimento movimento) {
+        long codigoVendedor = movimento.getVendedor().getCodigo();
+        Date dataPagamento = movimento.getDataPagamento();
+        Date dataPagamentoII = movimento.getDataPagamentoII();
+
+        return this.movimentoService.getMovimentoByData(dataPagamento, dataPagamentoII);
+    }
+
+    @PostMapping(value= "/busca/vendedor/data")
     public List<Movimento> getMovimentoByVendedorAndData(@RequestBody Movimento movimento) {
         long codigoVendedor = movimento.getVendedor().getCodigo();
         Date dataPagamento = movimento.getDataPagamento();
