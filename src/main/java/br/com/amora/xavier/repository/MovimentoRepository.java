@@ -31,6 +31,9 @@ public interface MovimentoRepository extends JpaRepository<Movimento, Long> {
     @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor AND m.cliente.codigo = :codigoCliente")
     List<Movimento> findMovimentoByCodigoVendedorAndCodigoCliente(@Param("codigoVendedor") long codigoVendedor, @Param("codigoCliente") long codigoCliente);
 
+    @Query("SELECT m FROM Movimento m WHERE m.dataPagamento >= :dataPagamento AND m.dataPagamento <= :dataPagamentoII OR m.dataPagamentoII >= :dataPagamento AND m.dataPagamentoII <= :dataPagamentoII")
+    List<Movimento> findMovimentoByData(@Param("dataPagamento") Date dataPagamento, @Param("dataPagamentoII") Date dataPagamentoII);
+
     @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor AND (m.dataPagamento >= :dataPagamento AND m.dataPagamento <= :dataPagamentoII OR m.dataPagamentoII >= :dataPagamento AND m.dataPagamentoII <= :dataPagamentoII)")
     List<Movimento> findMovimentoByVendedorAndData(@Param("codigoVendedor") long codigoVendedor, @Param("dataPagamento") Date dataPagamento, @Param("dataPagamentoII") Date dataPagamentoII);
 }

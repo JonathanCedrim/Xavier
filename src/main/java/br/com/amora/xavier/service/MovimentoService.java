@@ -34,6 +34,10 @@ public class MovimentoService {
         return movimentoRepository.findMovimentoByCodigoVendedorAndCodigoCliente(codigoVendedor, codigoCliente);
     }
 
+    public List<Movimento> getMovimentoByData(Date dataPagamento, Date dataPagamentoII) {
+        return movimentoRepository.findMovimentoByData(dataPagamento, dataPagamentoII);
+    }
+
     public List<Movimento> getMovimentoByVendedorAndData(long codigoVendedor, Date dataPagamento, Date dataPagamentoII) {
         return movimentoRepository.findMovimentoByVendedorAndData(codigoVendedor, dataPagamento, dataPagamentoII);
     }
