@@ -20,7 +20,6 @@ public class Movimento implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
     @Getter
     @Setter
     private long codigo;
@@ -34,6 +33,10 @@ public class Movimento implements Serializable {
     @Setter
     @ManyToOne
     private Cliente cliente;
+
+    @Getter
+    @Setter
+    private long codigoCliente;
 
     @Getter
     @Setter

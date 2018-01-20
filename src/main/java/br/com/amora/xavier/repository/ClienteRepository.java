@@ -1,6 +1,9 @@
 package br.com.amora.xavier.repository;
 
 import br.com.amora.xavier.model.Cliente;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -39,5 +42,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     List<Cliente> findClienteByEmail(@Param("email") String email);
 
     @Query("SELECT c FROM Cliente c WHERE c.vendedor.codigo = :codigoVendedor")
-    List<Cliente> getClientesDoVendedor(@Param("codigoVendedor") long codigoVendedor);
+    List<Cliente> findClientesByVendedor(@Param("codigoVendedor") long codigoVendedor);
+
+    @Query("SELECT c FROM Cliente c WHERE c.vendedor.codigo = :codigoVendedor")
+    Page<Cliente> findClientesByVendedor(@Param("codigoVendedor") long codigoVendedor, Pageable pageRequest);
 }

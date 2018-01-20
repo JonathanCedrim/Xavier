@@ -14,21 +14,21 @@ import java.util.List;
 public interface MovimentoRepository extends JpaRepository<Movimento, Long> {
 
     @Query("SELECT m FROM Movimento m WHERE m.codigo = :codigo")
-    Movimento findMovimentoByCodigo(Long codigo);
+    Movimento findMovimentoByCodigo(long codigo);
 
     @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor")
     List<Movimento> getMovimentosDoVendedor(@Param("codigoVendedor") long codigoVendedor);
 
-    @Query("SELECT m FROM Movimento m WHERE m.cliente.codigo = :codigoCliente")
+    @Query("SELECT m FROM Movimento m WHERE m.codigoCliente = :codigoCliente")
     List<Movimento> getMovimentosDoCliente(@Param("codigoCliente") long codigoCliente);
 
     @Query("SELECT m FROM Movimento m WHERE m.numeroRecibo = :numeroRecibo")
-    Movimento findMovimentoByNumeroRecibo(@Param("numeroRecibo") Long numeroRecibo);
+    Movimento findMovimentoByNumeroRecibo(@Param("numeroRecibo") long numeroRecibo);
 
     @Query("SELECT m FROM Movimento m WHERE m.numeroPedido = :numeroPedido")
-    Movimento findMovimentoBynumeroPedido(@Param("numeroPedido") Long numeroPedido);
+    Movimento findMovimentoBynumeroPedido(@Param("numeroPedido") long numeroPedido);
 
-    @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor AND m.cliente.codigo = :codigoCliente")
+    @Query("SELECT m FROM Movimento m WHERE m.vendedor.codigo = :codigoVendedor AND m.codigoCliente = :codigoCliente")
     List<Movimento> findMovimentoByCodigoVendedorAndCodigoCliente(@Param("codigoVendedor") long codigoVendedor, @Param("codigoCliente") long codigoCliente);
 
     @Query("SELECT m FROM Movimento m WHERE m.dataPagamento >= :dataPagamento AND m.dataPagamento <= :dataPagamentoII OR m.dataPagamentoII >= :dataPagamento AND m.dataPagamentoII <= :dataPagamentoII")
