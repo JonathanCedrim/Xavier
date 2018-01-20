@@ -15,9 +15,9 @@ public class ClienteRest {
     private ClienteService clienteService;
 
 
-    @GetMapping
-    public List<Cliente> getAllClientes() {
-        return clienteService.getAllClientes();
+    @GetMapping("/pagina/{pagina}/tamanho/{tamanho}")
+    public List<Cliente> getAllClientes(@PathVariable("pagina") int pagina, @PathVariable("tamanho") int tamanho) {
+        return clienteService.getAllClientes(pagina, tamanho);
     }
 
     @DeleteMapping("/{id}")
@@ -43,6 +43,11 @@ public class ClienteRest {
     @GetMapping("/busca/nome/{nome}")
     public List<Cliente> getClientesByNome(@PathVariable String nome) {
         return clienteService.findClientesByNome(nome);
+    }
+
+    @GetMapping("/busca/vendedor/{codigoVendedor}/pagina/{pagina}/tamanho/{tamanho}")
+    public List<Cliente> getClientesByVendedor(@PathVariable("codigoVendedor") long codigoVendedor, @PathVariable("pagina") int pagina, @PathVariable("tamanho") int tamanho) {
+        return clienteService.findClientesByVendedor(codigoVendedor, pagina, tamanho);
     }
 
     @GetMapping("/busca/codigo/vendedor/{codigoVendedor}/cliente/{codigoCliente}")

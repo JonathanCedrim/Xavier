@@ -136,7 +136,7 @@ public class Cliente implements Serializable {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy= "cliente")
     @JsonIgnore
     private List<Movimento> movimentos;
 }

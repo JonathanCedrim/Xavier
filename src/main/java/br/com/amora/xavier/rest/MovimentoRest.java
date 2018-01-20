@@ -23,22 +23,22 @@ public class MovimentoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public Movimento getMovimentoById(@PathVariable Long id) {
+    public Movimento getMovimentoById(@PathVariable long id) {
         return movimentoService.getMovimentoById(id);
     }
 
     @GetMapping(value = "/busca/codigo/{codigo}")
-    public Movimento getMovimentoByCodigo(@PathVariable Long codigo) {
+    public Movimento getMovimentoByCodigo(@PathVariable long codigo) {
         return movimentoService.getMovimentoByCodigo(codigo);
     }
 
     @GetMapping(value = "/busca/numeroRecibo/{numeroRecibo}")
-    public Movimento getMovimentoByNumeroRecibo(@PathVariable Long numeroRecibo) {
+    public Movimento getMovimentoByNumeroRecibo(@PathVariable long numeroRecibo) {
         return movimentoService.getMovimentoByNumeroRecibo(numeroRecibo);
     }
 
     @GetMapping(value = "/busca/numeroPedido/{numeroPedido}")
-    public Movimento getMovimentoByNumeroPedido(@PathVariable Long numeroPedido) {
+    public Movimento getMovimentoByNumeroPedido(@PathVariable long numeroPedido) {
         return movimentoService.getMovimentoByNumeroPedido(numeroPedido);
     }
 
@@ -49,20 +49,12 @@ public class MovimentoRest {
 
     @PostMapping(value= "/busca/data")
     public List<Movimento> getMovimentoByData(@RequestBody Movimento movimento) {
-        long codigoVendedor = movimento.getVendedor().getCodigo();
-        Date dataPagamento = movimento.getDataPagamento();
-        Date dataPagamentoII = movimento.getDataPagamentoII();
-
-        return this.movimentoService.getMovimentoByData(dataPagamento, dataPagamentoII);
+        return this.movimentoService.getMovimentoByData(movimento);
     }
 
     @PostMapping(value= "/busca/vendedor/data")
     public List<Movimento> getMovimentoByVendedorAndData(@RequestBody Movimento movimento) {
-        long codigoVendedor = movimento.getVendedor().getCodigo();
-        Date dataPagamento = movimento.getDataPagamento();
-        Date dataPagamentoII = movimento.getDataPagamentoII();
-
-        return this.movimentoService.getMovimentoByVendedorAndData(codigoVendedor, dataPagamento, dataPagamentoII);
+        return this.movimentoService.getMovimentoByVendedorAndData(movimento);
     }
 
     @PostMapping
@@ -76,7 +68,7 @@ public class MovimentoRest {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteMovimentoById(@PathVariable Long id) {
+    public void deleteMovimentoById(@PathVariable long id) {
         movimentoService.deleteMovimentoById(id);
     }
 }
