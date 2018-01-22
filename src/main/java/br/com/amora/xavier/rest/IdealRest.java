@@ -39,19 +39,17 @@ public class IdealRest {
 
     @PostMapping(value = "/busca/data")
     public List<Ideal> getIdealByData(@RequestBody Ideal ideal) {
-        Date dataInicial = ideal.getDataInicial();
-        Date dataFinal = ideal.getDataFinal();
+        return idealService.getIdealByData(ideal);
+    }
 
-        return idealService.getIdealByData(dataInicial, dataFinal);
+    @PostMapping(value = "/busca/dataLancamento")
+    public List<Ideal> getIdealByDataLancamento(@RequestBody Ideal ideal) {
+        return idealService.getIdealByDataLancamento(ideal);
     }
 
     @PostMapping(value = "/busca/vendedor/data")
     public List<Ideal> getIdealByVendedorAndData(@RequestBody Ideal ideal) {
-        long codigoVendedor = ideal.getVendedor().getCodigo();
-        Date dataInicial = ideal.getDataInicial();
-        Date dataFinal = ideal.getDataFinal();
-
-        return idealService.getIdealByVendedorAndData(codigoVendedor, dataInicial, dataFinal);
+        return idealService.getIdealByVendedorAndData(ideal);
     }
 
     @PostMapping

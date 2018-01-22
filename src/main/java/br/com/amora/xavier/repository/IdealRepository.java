@@ -26,4 +26,7 @@ public interface IdealRepository extends JpaRepository<Ideal, Long> {
 
     @Query("SELECT i FROM Ideal i WHERE i.vendedor.codigo = :codigoVendedor AND (i.dataInicial >= :dataInicial AND i.dataInicial <= :dataFinal OR i.dataFinal >= :dataInicial AND i.dataFinal <= :dataFinal)")
     List<Ideal> getIdealByVendedorAndData(@Param("codigoVendedor") long codigoVendedor, @Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
+
+    @Query("SELECT i FROM Ideal i WHERE i.dataLancamento >= :dataInicial AND i.dataLancamento <= :dataFinal")
+    List<Ideal> getIdealByDataLancamento(@Param("dataInicial") Date dataInicial, @Param("dataFinal") Date dataFinal);
 }

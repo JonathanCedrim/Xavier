@@ -21,6 +21,9 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    public int getTotalClientes() {
+        return this.clienteRepository.findAll().size();
+    }
 
     public List<Cliente> getAllClientes(int pagina, int tamanho) {
 

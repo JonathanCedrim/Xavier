@@ -14,25 +14,14 @@ public class ClienteRest {
     @Autowired
     private ClienteService clienteService;
 
+    @GetMapping("/total")
+    public int getTotalClientes() {
+        return clienteService.getTotalClientes();
+    }
 
     @GetMapping("/pagina/{pagina}/tamanho/{tamanho}")
     public List<Cliente> getAllClientes(@PathVariable("pagina") int pagina, @PathVariable("tamanho") int tamanho) {
         return clienteService.getAllClientes(pagina, tamanho);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCliente(@PathVariable Long id) {
-        clienteService.deleteClienteById(id);
-    }
-
-    @PostMapping
-    public void saveCliente(@RequestBody Cliente cliente) {
-        clienteService.saveCliente(cliente);
-    }
-
-    @PutMapping
-    public void updateCliente(@RequestBody Cliente cliente) {
-        clienteService.updateCliente(cliente);
     }
 
     @GetMapping("/{id}")
@@ -83,5 +72,20 @@ public class ClienteRest {
     @GetMapping("/busca/email/{email}")
     public List<Cliente> getClientesByEmail(@PathVariable String email) {
         return clienteService.findClientesByEmail(email);
+    }
+
+    @PostMapping
+    public void saveCliente(@RequestBody Cliente cliente) {
+        clienteService.saveCliente(cliente);
+    }
+
+    @PutMapping
+    public void updateCliente(@RequestBody Cliente cliente) {
+        clienteService.updateCliente(cliente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCliente(@PathVariable Long id) {
+        clienteService.deleteClienteById(id);
     }
 }

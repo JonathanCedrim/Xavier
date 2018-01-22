@@ -52,7 +52,7 @@ public class Ideal implements Serializable {
 
     @Getter
     @Setter
-    private long sobra;
+    private double sobra;
 
     @Getter
     @Setter
