@@ -22,12 +22,16 @@ public class IdealService {
 
     public List<Ideal> getIdealsByVendedor(long codigoVendedor) { return this.idealRepository.getIdealsByVendedor(codigoVendedor);}
 
-    public List<Ideal> getIdealByData(Date dataInicial, Date dataFinal) {
-        return this.idealRepository.getIdealByData(dataInicial, dataFinal);
+    public List<Ideal> getIdealByData(Ideal ideal) {
+        return this.idealRepository.getIdealByData(ideal.getDataInicial(), ideal.getDataFinal());
     }
 
-    public List<Ideal> getIdealByVendedorAndData(long codigoVendendor, Date dataInicial, Date dataFinal) {
-        return this.idealRepository.getIdealByVendedorAndData(codigoVendendor, dataInicial, dataFinal);
+    public List<Ideal> getIdealByVendedorAndData(Ideal ideal) {
+        return this.idealRepository.getIdealByVendedorAndData(ideal.getVendedor().getCodigo(), ideal.getDataInicial(), ideal.getDataFinal());
+    }
+
+    public List<Ideal> getIdealByDataLancamento(Ideal ideal) {
+        return this.idealRepository.getIdealByDataLancamento(ideal.getDataInicial(), ideal.getDataFinal());
     }
 
     public List<Ideal> getAllIdeals() { return this.idealRepository.findAll(); }
