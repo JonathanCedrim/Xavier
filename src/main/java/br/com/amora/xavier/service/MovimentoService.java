@@ -61,6 +61,8 @@ public class MovimentoService {
 
     public void saveMovimento(Movimento movimento) {
         atualizaCodigo(movimento);
+        movimento.setCodigoCliente(movimento.getCliente().getCodigo());
+
         movimentoRepository.save(movimento);
     }
 
@@ -72,7 +74,7 @@ public class MovimentoService {
         movimentoRepository.delete(id);
     }
 
-     private void atualizaCodigo(Movimento movimento) {
+    private void atualizaCodigo(Movimento movimento) {
 
         List<Movimento> movimentoes = movimentoRepository.findAll();
         movimento.setCodigo(1);//POG

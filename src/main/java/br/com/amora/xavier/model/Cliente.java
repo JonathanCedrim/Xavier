@@ -139,4 +139,10 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy= "cliente")
     @JsonIgnore
     private List<Movimento> movimentos;
+
+    @Getter
+    @Setter
+    @Column(precision = 4, scale = 2)
+    private long saldo;
+
 }

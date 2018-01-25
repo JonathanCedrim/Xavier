@@ -1,17 +1,14 @@
 package br.com.amora.xavier.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@EqualsAndHashCode
-public class Conta implements Serializable {
-
+public class Entidade implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
@@ -26,32 +23,18 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
-    @ManyToOne
-    private Entidade entidade;
+    @OneToMany(mappedBy = "entidade")
+    private List<Conta> contas;
 
     @Getter
     @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorConta;
+    private String nome;
 
     @Getter
     @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorPago;
-
-    @Getter
-    @Setter
-    private Date dataPagamento;
-
-    @Getter
-    @Setter
-    private Date dataLancamento;
+    private String telefone;
 
     @Getter
     @Setter
     private String observacao;
-
-    @Getter
-    @Setter
-    private boolean pago;
 }

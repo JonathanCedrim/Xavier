@@ -1,6 +1,5 @@
-package br.com.amora.xavier.model;
+    package br.com.amora.xavier.model;
 
-import com.fasterxml.jackson.annotation.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
