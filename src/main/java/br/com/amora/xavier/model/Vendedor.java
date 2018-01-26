@@ -16,30 +16,30 @@ import java.util.List;
 
 @Entity
 @EqualsAndHashCode
-public class Vendedor extends Funcionario implements Serializable {
+public class
+Vendedor extends Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
     @Setter
-    private long id;
+    private long id;//FKge2n40m7bl1smfffx9jveymmu
     
     @Getter
     @Setter
     private long codigo;
 
-    @Column(length = 63)
     @Getter
     @Setter
     private String nome;
 
-    @Column(length = 20, unique = true)
+    @Column(length = 20)
     @Getter
     @Setter
     private String rg;
 
-    @Column(length = 20, unique = true)
+    @Column(length = 20)
     @Getter
     @Setter
     private String cpf;
@@ -56,7 +56,12 @@ public class Vendedor extends Funcionario implements Serializable {
     @JsonIgnore
     private List<Movimento> movimentos;
 
-    @Column(length = 50)
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "vendedor")
+    @JsonIgnore
+    private List<Ideal> ideals;
+
     @Getter
     @Setter
     private String observacao;

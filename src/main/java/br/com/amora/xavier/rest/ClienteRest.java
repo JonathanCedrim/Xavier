@@ -14,25 +14,14 @@ public class ClienteRest {
     @Autowired
     private ClienteService clienteService;
 
-
-    @GetMapping
-    public List<Cliente> getAllClientes() {
-        return clienteService.getAllClientes();
+    @GetMapping("/total")
+    public int getTotalClientes() {
+        return clienteService.getTotalClientes();
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCliente(@PathVariable Long id) {
-        clienteService.deleteClienteById(id);
-    }
-
-    @PostMapping
-    public void saveCliente(@RequestBody Cliente cliente) {
-        clienteService.saveCliente(cliente);
-    }
-
-    @PutMapping
-    public void updateCliente(@RequestBody Cliente cliente) {
-        clienteService.updateCliente(cliente);
+    @GetMapping("/pagina/{pagina}/tamanho/{tamanho}")
+    public List<Cliente> getAllClientes(@PathVariable("pagina") int pagina, @PathVariable("tamanho") int tamanho) {
+        return clienteService.getAllClientes(pagina, tamanho);
     }
 
     @GetMapping("/{id}")
@@ -45,9 +34,14 @@ public class ClienteRest {
         return clienteService.findClientesByNome(nome);
     }
 
-    @GetMapping("/busca/codigo/{codigo}")
-    public Cliente getClienteByCodigo(@PathVariable Long codigo) {
-        return clienteService.findClienteByCodigo(codigo);
+    @GetMapping("/busca/vendedor/{codigoVendedor}/pagina/{pagina}/tamanho/{tamanho}")
+    public List<Cliente> getClientesByVendedor(@PathVariable("codigoVendedor") long codigoVendedor, @PathVariable("pagina") int pagina, @PathVariable("tamanho") int tamanho) {
+        return clienteService.findClientesByVendedor(codigoVendedor, pagina, tamanho);
+    }
+
+    @GetMapping("/busca/codigo/vendedor/{codigoVendedor}/cliente/{codigoCliente}")
+    public Cliente getClienteByCodigo(@PathVariable long codigoVendedor, @PathVariable long codigoCliente) {
+        return clienteService.findClienteByCodigo(codigoVendedor, codigoCliente);
     }
 
     @GetMapping("/busca/rg/{rg}")
@@ -78,5 +72,20 @@ public class ClienteRest {
     @GetMapping("/busca/email/{email}")
     public List<Cliente> getClientesByEmail(@PathVariable String email) {
         return clienteService.findClientesByEmail(email);
+    }
+
+    @PostMapping
+    public void saveCliente(@RequestBody Cliente cliente) {
+        clienteService.saveCliente(cliente);
+    }
+
+    @PutMapping
+    public void updateCliente(@RequestBody Cliente cliente) {
+        clienteService.updateCliente(cliente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCliente(@PathVariable Long id) {
+        clienteService.deleteClienteById(id);
     }
 }

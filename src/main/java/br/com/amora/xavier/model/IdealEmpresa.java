@@ -6,12 +6,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @EqualsAndHashCode
-public class Conta implements Serializable {
-
+public class IdealEmpresa implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
@@ -26,18 +26,7 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
-    @ManyToOne
-    private Entidade entidade;
-
-    @Getter
-    @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorConta;
-
-    @Getter
-    @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorPago;
+    private Date dataLancamento;
 
     @Getter
     @Setter
@@ -49,17 +38,18 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
-    private Date dataPagamento;
+    private long totalRecebido;
 
     @Getter
     @Setter
-    private Date dataLancamento;
+    private long ideal;
 
     @Getter
     @Setter
-    private String observacao;
+    @Column(precision=8, scale = 4)
+    private BigDecimal sobra;
 
     @Getter
     @Setter
-    private boolean pago;
+    private String responsavel;
 }

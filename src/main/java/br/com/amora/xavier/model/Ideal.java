@@ -1,18 +1,19 @@
 package br.com.amora.xavier.model;
 
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @EqualsAndHashCode
-public class Conta implements Serializable {
-
-    private static final long SerialVersionUID = 1L;
+public class Ideal implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,17 +28,11 @@ public class Conta implements Serializable {
     @Getter
     @Setter
     @ManyToOne
-    private Entidade entidade;
+    private Vendedor vendedor;
 
     @Getter
     @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorConta;
-
-    @Getter
-    @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorPago;
+    private Date dataLancamento;
 
     @Getter
     @Setter
@@ -49,17 +44,18 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
-    private Date dataPagamento;
+    private long totalRecebido;
 
     @Getter
     @Setter
-    private Date dataLancamento;
+    private long ideal;
 
     @Getter
     @Setter
-    private String observacao;
+    @Column(precision=8, scale = 4)
+    private BigDecimal sobra;
 
     @Getter
     @Setter
-    private boolean pago;
+    private String responsavel;
 }

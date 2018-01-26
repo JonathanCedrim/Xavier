@@ -7,11 +7,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @EqualsAndHashCode
-public class Conta implements Serializable {
-
+public class Entidade implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
@@ -26,40 +26,38 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
-    @ManyToOne
-    private Entidade entidade;
+    @OneToMany(mappedBy = "entidade")
+    private List<Conta> contas;
 
     @Getter
     @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorConta;
+    private String nome;
 
     @Getter
     @Setter
-    @Column(precision = 4, scale = 2)
-    private long valorPago;
+    private String email;
 
     @Getter
     @Setter
-    private Date dataInicial;
+    private String telefone;
 
     @Getter
     @Setter
-    private Date dataFinal;
+    private String operadora;
 
     @Getter
     @Setter
-    private Date dataPagamento;
+    private String celular;
 
     @Getter
     @Setter
-    private Date dataLancamento;
+    private String operadoraII;
+
+    @Getter
+    @Setter
+    private String celularII;
 
     @Getter
     @Setter
     private String observacao;
-
-    @Getter
-    @Setter
-    private boolean pago;
 }

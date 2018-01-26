@@ -28,7 +28,6 @@ public class Cliente implements Serializable {
     @Setter
     private long codigo;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private String nome;
@@ -43,7 +42,6 @@ public class Cliente implements Serializable {
     @Setter
     private String cpf;
 
-    @Column(length = 60, unique = true)
     @Getter
     @Setter
     private String email;
@@ -62,18 +60,14 @@ public class Cliente implements Serializable {
     @Setter
     private Date dataNascimento;
 
-
-    @Column(length = 60)
     @Getter
     @Setter
     private String observacao;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private String conjugue;
 
-    @Column(length = 30)
     @Getter
     @Setter
     private String municipio;
@@ -83,27 +77,22 @@ public class Cliente implements Serializable {
     @Setter
     private String sigla;
 
-    @Column(length = 30)
     @Getter
     @Setter
     private String bairro;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private String endereco;
 
-    @Column(length = 10)
     @Getter
     @Setter
     private String numero;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private String referencia;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private String telefone;
@@ -112,7 +101,6 @@ public class Cliente implements Serializable {
     @Setter
     private String operadora;
 
-    @Column(length = 60, unique = true)
     @Getter
     @Setter
     private String celular;
@@ -121,12 +109,10 @@ public class Cliente implements Serializable {
     @Setter
     private String operadoraII;
 
-    @Column(length = 60, unique = true)
     @Getter
     @Setter
     private String celularII;
 
-    @Column(length = 60)
     @Getter
     @Setter
     private Date dataCadastro;
@@ -136,7 +122,7 @@ public class Cliente implements Serializable {
     @Setter
     private String selecionado;
 
-    @Column(length = 4)
+    @Column(length = 1)
     @Getter
     @Setter
     private String spc;
@@ -150,7 +136,13 @@ public class Cliente implements Serializable {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "vendedor")
+    @OneToMany(mappedBy= "cliente")
     @JsonIgnore
     private List<Movimento> movimentos;
+
+    @Getter
+    @Setter
+    @Column(precision = 4, scale = 2)
+    private long saldo;
+
 }
