@@ -41,6 +41,14 @@ public class Conta implements Serializable {
 
     @Getter
     @Setter
+    private Date dataInicial;
+
+    @Getter
+    @Setter
+    private Date dataFinal;
+
+    @Getter
+    @Setter
     private Date dataPagamento;
 
     @Getter
