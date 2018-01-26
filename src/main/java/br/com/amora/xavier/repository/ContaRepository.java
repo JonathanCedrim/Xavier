@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 
-    @Query("SELECT c FROM Conta c WHERE c.nome LIKE %:nome%")
-    public List<Conta> findContasByNome(@Param("nome") String nome);
-
     @Query("SELECT c FROM Conta c WHERE c.codigo = :codigo")
     public Conta findContaByCodigo(@Param("codigo") long codigo);
 
