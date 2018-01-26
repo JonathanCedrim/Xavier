@@ -1,13 +1,11 @@
 package br.com.amora.xavier.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -44,15 +42,16 @@ public class Ideal implements Serializable {
 
     @Getter
     @Setter
-    private int totalRecebido;
+    private long totalRecebido;
 
     @Getter
     @Setter
-    private int ideal;
+    private long ideal;
 
     @Getter
     @Setter
-    private double sobra;
+    @Column(precision=8, scale = 4)
+    private BigDecimal sobra;
 
     @Getter
     @Setter
